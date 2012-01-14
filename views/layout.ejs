@@ -8,15 +8,29 @@
 <meta name="keywords" content=""> 
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
  
- 
 <link href="/css/style.css" rel="stylesheet" type="text/css"> 
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
-<script type="text/javascript" src="/js/index.js"></script>
 
+<script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=	
+AIzaSyBTdxNaLQRzSRZ7K4ys4Rwdj3HeYZy_jb8&sensor=true">
+    </script>
+
+    <script type="text/javascript">
+      function initialize() {
+        var myOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            myOptions);
+      }
+
+    </script>
+<script type="text/javascript" src="/js/index.js"></script>
 </head> 
- 
-<body> 
+  
 <%-body%>
-</body> 
 </html> 
