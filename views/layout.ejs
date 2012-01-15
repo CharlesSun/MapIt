@@ -31,12 +31,24 @@ AIzaSyBTdxNaLQRzSRZ7K4ys4Rwdj3HeYZy_jb8&sensor=true">
         };
         var map = new google.maps.Map(document.getElementById("map_canvas"),
             myOptions);
+        var currentLocation;
+        //request a position
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {maximumAge:600000, time:0});
+        function successCallback(position) {
+		currentLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+map.setCenter(currentLocation);
+current_lat = position.coords.latitude;
+			current_lng = position.coords.longitude;
+        }
+	function errorCallback(error){
+           //error stuff goes here
+        }
       }
+
 
     </script>
 <script type="text/javascript" src="/js/index.js"></script>
 </head> 
   
 <%-body%>
-blehfls
 </html> 
