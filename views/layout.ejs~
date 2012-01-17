@@ -41,7 +41,7 @@ current_lat = position.coords.latitude;
 			current_lng = position.coords.longitude;
         }
 	function errorCallback(error){
-
+           //error stuff goes here
         }
       }
 

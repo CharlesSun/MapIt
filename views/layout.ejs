@@ -26,7 +26,7 @@ AIzaSyBTdxNaLQRzSRZ7K4ys4Rwdj3HeYZy_jb8&sensor=true">
       function initialize() {
         var myOptions = {
           center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8,
+          zoom: 10,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("map_canvas"),
@@ -37,8 +37,22 @@ AIzaSyBTdxNaLQRzSRZ7K4ys4Rwdj3HeYZy_jb8&sensor=true">
         function successCallback(position) {
 		currentLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
 map.setCenter(currentLocation);
-current_lat = position.coords.latitude;
-			current_lng = position.coords.longitude;
+		var marker = new google.maps.Marker({
+			position: currentLocation,
+			map: map,
+                        title:"You are Here"
+});
+		var contentString = "You are here";
+        var infoWindow = new google.maps.InfoWindow({
+                content: contentString
+});
+        google.maps.event.addListener(marker, 'click', function() {
+                infoWindow.open(map, marker);
+        });
+
+	google.maps.event.addListener(map, 'click', function() {
+		infoWindow.close(map, marker);
+});
         }
 	function errorCallback(error){
            //error stuff goes here
