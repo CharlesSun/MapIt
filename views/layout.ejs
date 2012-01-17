@@ -53,6 +53,17 @@ map.setCenter(currentLocation);
 	google.maps.event.addListener(map, 'click', function() {
 		infoWindow.close(map, marker);
 });
+
+	$('#map_canvas').slideToggle();
+	$('#selec_menu').show();
+
+	$(document).ready(function() {
+                $('#switch').click(function() {
+                        $('#map_canvas').slideToggle();
+                        $('#selec_menu').hide();
+                });
+        });
+
         }
 	function errorCallback(error){
            //error stuff goes here
