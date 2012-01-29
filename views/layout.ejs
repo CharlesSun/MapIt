@@ -24,6 +24,9 @@ AIzaSyBTdxNaLQRzSRZ7K4ys4Rwdj3HeYZy_jb8&sensor=true">
 
     <script type="text/javascript">
       function initialize() {
+	$(document).ready(function() {
+		$('#map_canvas').show();
+	});
         var myOptions = {
           center: new google.maps.LatLng(-34.397, 150.644),
           zoom: 10,
@@ -54,8 +57,8 @@ map.setCenter(currentLocation);
 		infoWindow.close(map, marker);
 });
 
-	$('#map_canvas').slideToggle();
-	$('#selec_menu').show();
+	/*$('#map_canvas').slideToggle();
+	$('#selec_menu').show();*/
 
 	$(document).ready(function() {
                 $('#switch').click(function() {
