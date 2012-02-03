@@ -23,17 +23,44 @@ AIzaSyBTdxNaLQRzSRZ7K4ys4Rwdj3HeYZy_jb8&sensor=true">
     </script>
 
     <script type="text/javascript">
+	function createGuide(){
+	
+
+	}
+
       function initialize() {
 	$(document).ready(function() {
+		$('#selec_menu').hide();
 		$('#map_canvas').show();
 	});
-        var myOptions = {
+	geocoder = new google.maps.Geocoder();
+	var latlng = new google.maps.LatLng(-34.397, 150.644);
+	var myOptions = {
           center: new google.maps.LatLng(-34.397, 150.644),
           zoom: 10,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        var map = new google.maps.Map(document.getElementById("map_canvas"),
+
+	map = new google.maps.Map(document.getElementById("map_canvas"),
             myOptions);
+	var address = document.getElementById("address").value;
+	geocoder.geocode( {'address': address}, function(results, status) {
+	  if (status == google.maps.GeocoderStatus.OK) {
+		map.setCenter(results[0].geometry.location);
+		var marker = new google.maps.Marker({
+		   map: map,
+		   position: results[0].geometry.location
+	 	});
+	  } else {
+		alert('Geocode was not successful');
+	  }
+	});
+        /*var myOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 10,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };*/ 
+      
         var currentLocation;
         //request a position
         navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {maximumAge:600000, time:0});
